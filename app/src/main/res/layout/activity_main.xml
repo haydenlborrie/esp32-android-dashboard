@@ -4,15 +4,222 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:background="@color/charcoal"
+    tools:context=".DashBoardActivity">
 
     <TextView
+        android:id="@+id/textView_heading"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="12dp"
+        android:fontFamily="@font/nasalizationrg"
+        android:text="ESP Dashboard"
+        android:textColor="@color/sand_stone"
+        android:textSize="30sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        android:id="@+id/px"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/digital_mono"
+        android:text="--.--"
+        android:textColor="@color/sand_stone"
+        android:textSize="40sp"
+        app:layout_constraintBottom_toTopOf="@+id/temp_px"
+        app:layout_constraintEnd_toStartOf="@+id/guideline2"
+        app:layout_constraintTop_toBottomOf="@id/textView_heading" />
+
+    <TextView
+        android:id="@+id/temp_px"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/digital_mono"
+
+        android:text="--.--"
+        android:textColor="@color/sand_stone"
+        android:textSize="40sp"
+        app:layout_constraintBottom_toTopOf="@+id/humidity"
+        app:layout_constraintEnd_toStartOf="@+id/guideline2"
+        app:layout_constraintTop_toBottomOf="@+id/px" />
+
+    <TextView
+        android:id="@+id/humidity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/digital_mono"
+        android:text="--.--"
+        android:textColor="@color/sand_stone"
+        android:textSize="40sp"
+        app:layout_constraintBottom_toTopOf="@+id/temp_dht22"
+        app:layout_constraintEnd_toStartOf="@+id/guideline2"
+        app:layout_constraintTop_toBottomOf="@+id/temp_px" />
+
+    <TextView
+        android:id="@+id/heat_index"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/digital_mono"
+        android:text="--.--"
+        android:textColor="@color/sand_stone"
+        android:textSize="40sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guideline2"
+        app:layout_constraintTop_toBottomOf="@+id/temp_dht22" />
+
+    <TextView
+        android:id="@+id/temp_dht22"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/digital_mono"
+        android:text="--.--"
+        android:textColor="@color/sand_stone"
+        android:textSize="40sp"
+        app:layout_constraintBottom_toTopOf="@+id/heat_index"
+        app:layout_constraintEnd_toStartOf="@+id/guideline2"
+        app:layout_constraintTop_toBottomOf="@+id/humidity" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintGuide_percent="0.55"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewHumidityPercent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:fontFamily="@font/nasalizationrg"
+        android:labelFor="@id/humidity"
+        android:text="%"
+        android:textColor="@color/sand_stone"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toBottomOf="@+id/humidity"
+        app:layout_constraintStart_toStartOf="@+id/guideline2"
+        app:layout_constraintTop_toTopOf="@+id/humidity" />
+
+    <TextView
+        android:id="@+id/textViewDhtEnd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:fontFamily="@font/nasalizationrg"
+        android:labelFor="@id/temp_dht22"
+        android:text="°C"
+        android:textColor="@color/sand_stone"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toBottomOf="@+id/temp_dht22"
+        app:layout_constraintStart_toEndOf="@+id/temp_dht22"
+        app:layout_constraintTop_toTopOf="@+id/temp_dht22" />
+
+
+    <TextView
+        android:id="@+id/textViewDhtEnd2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:fontFamily="@font/nasalizationrg"
+        android:labelFor="@id/temp_px"
+        android:text="°C"
+        android:textColor="@color/sand_stone"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toBottomOf="@+id/temp_px"
+        app:layout_constraintStart_toEndOf="@+id/temp_dht22"
+        app:layout_constraintTop_toTopOf="@+id/temp_px" />
+
+    <TextView
+        android:id="@+id/textViewDhtEnd3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:fontFamily="@font/nasalizationrg"
+        android:labelFor="@id/heat_index"
+        android:text="°C"
+        android:textColor="@color/sand_stone"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toBottomOf="@+id/heat_index"
+        app:layout_constraintStart_toEndOf="@+id/temp_dht22"
+        app:layout_constraintTop_toTopOf="@+id/heat_index" />
+
+    <TextView
+        android:id="@+id/textViewPxEnd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+
+        android:fontFamily="@font/nasalizationrg"
+        android:labelFor="@id/px"
+        android:text="hpa"
+        android:textColor="@color/sand_stone"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toBottomOf="@+id/px"
+        app:layout_constraintStart_toStartOf="@+id/guideline2"
+        app:layout_constraintTop_toTopOf="@+id/px" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/nasalizationrg"
+        android:text="Humidity"
+
+        android:textColor="@color/red"
+        app:layout_constraintBottom_toTopOf="@+id/humidity"
+        app:layout_constraintEnd_toStartOf="@+id/guideline2" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/nasalizationrg"
+
+        android:text="DHT Temp"
+        android:textColor="@color/red"
+        app:layout_constraintBottom_toTopOf="@+id/temp_dht22"
+        app:layout_constraintEnd_toStartOf="@+id/guideline2" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/nasalizationrg"
+
+        android:text="Air Pressure"
+        android:textColor="@color/blue"
+        app:layout_constraintBottom_toTopOf="@+id/px"
+        app:layout_constraintEnd_toStartOf="@+id/guideline2" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/nasalizationrg"
+        android:text="Temp"
+        android:textColor="@color/blue"
+        app:layout_constraintBottom_toTopOf="@+id/temp_px"
+        app:layout_constraintEnd_toStartOf="@+id/guideline2" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/nasalizationrg"
+
+        android:text="Heat Index"
+        android:textColor="@color/red"
+        app:layout_constraintBottom_toTopOf="@+id/heat_index"
+        app:layout_constraintEnd_toStartOf="@+id/guideline2" />
+    <!--    <androidx.cardview.widget.CardView-->
+    <!--        android:layout_width="200dp"-->
+    <!--        android:layout_height="200dp"-->
+    <!--        app:cardBackgroundColor="@color/charcoal"-->
+    <!--        android:elevation="5dp"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toBottomOf="@+id/textView_heading" />-->
 </androidx.constraintlayout.widget.ConstraintLayout>

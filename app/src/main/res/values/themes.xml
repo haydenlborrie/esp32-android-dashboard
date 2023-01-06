@@ -1,10 +1,13 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-<!-- Base application theme. -->
-<style name="Theme.Esp32" parent="Theme.AppCompat.DayNight">
-    <!-- Primary brand color. -->
-    <item name="colorPrimary">@color/purple_500</item>
-       <!-- Status bar color. -->
-    <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimary</item>
-    <!-- Customize your theme here. -->
-</style>
+    <!-- Base application theme. -->
+    <style name="Theme.Esp32" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <!-- set background color behind the bottom navigation buttons -->
+        <item name="android:navigationBarColor">@color/charcoal</item>
+        <item name="android:statusBarColor">@color/charcoal</item>
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/purple_500</item>
+        <!-- Status bar color. -->
+<!--        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimary</item>-->
+        <!-- Customize your theme here. -->
+    </style>
 </resources>
