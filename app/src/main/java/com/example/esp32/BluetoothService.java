@@ -1,25 +1,15 @@
 package com.example.esp32;
 
-import static com.example.esp32.Util.Constants.REQUEST_ENABLE_BT;
-import static com.example.esp32.Util.Constants.SELECT_DEVICE_REQUEST_CODE;
-
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothManager;
 import android.bluetooth.BluetoothSocket;
-import android.companion.CompanionDeviceManager;
 import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
-import android.os.Bundle;
 import android.os.Handler;
-import android.os.Message;
 import android.util.Log;
-import android.widget.Toast;
 
-import androidx.annotation.Nullable;
 import androidx.lifecycle.MutableLiveData;
 
 import com.example.esp32.Util.Constants;
@@ -46,11 +36,6 @@ public class BluetoothService {
     private static final String TAG = "BluetoothService";
     private final MyInterface myInterface;
     private BluetoothAdapter bluetoothAdapter;
-    private BluetoothManager bluetoothManager;
-
-    public static final int MESSAGE_READ = 0;
-    public static final int MESSAGE_WRITE = 1;
-    public static final int MESSAGE_TOAST = 2;
 
     MutableLiveData<String> tempDht, humidityDht, tempBarometer, heatIndexDht, pxBarometer;
 
@@ -97,7 +82,6 @@ public class BluetoothService {
     public BluetoothService(MyInterface myInterface,
                             BluetoothManager bluetoothManager) {
         this.myInterface = myInterface;
-        this.bluetoothManager = bluetoothManager;
         bluetoothAdapter = bluetoothManager.getAdapter();
         tempDht = new MutableLiveData<>();
         humidityDht = new MutableLiveData<>();
@@ -178,12 +162,6 @@ public class BluetoothService {
                         public void onSubscribe(Subscription s) {
                             subscription = s;
                             requestDataPacket();
-                            // subscription.request(1);
-                            // try {
-                            //     socketOutputStream.write('1');
-                            // } catch (IOException e) {
-                            //     e.printStackTrace();
-                            // }
                         }
 
                         @Override
@@ -196,27 +174,8 @@ public class BluetoothService {
                             pxBarometer.postValue(dataArray[Constants.BAROMETER_PX_INDEX]);
                             tempBarometer.postValue(dataArray[Constants.BAROMETER_TEMP_INDEX]);
 
-                            // sprintf(charBuffer, "%.2f,%.2f,%.2f,%.2f,%.2f\0",
-                            // dhtVals.humidity,
-                            // dhtVals.temp
-                            // dhtVals.heatIndex
-                            // r.pressure
-                            // r.temperature);
-                            //
-
-
                             // this call should be made at certain intervals
                             requestDataPacket();
-
-                            //this is a background thread
-                            // try {
-                            //     // Request more data by writing a 1 bit
-                            //     socketOutputStream.write('1');
-                            //     // Flowable requesting another batch of information
-                            //     subscription.request(1);
-                            // } catch (IOException e) {
-                            //     e.printStackTrace();
-                            // }
                         }
 
                         @Override
@@ -335,21 +294,21 @@ public class BluetoothService {
             public void run() {
 
 
-//                // Make a connection to the BluetoothSocket
-//                try {
-//                    // This is a blocking call and will only return on a
-//                    // successful connection or an exception
-//
-//
-//                } catch (IOException e) {
-//                    throw new RuntimeException(e);
-//                    // Close the socket
-////                    try {
-////                        mmSocket.close();
-////                    } catch (IOException e2) {
-////                        Log.e(TAG, "unable to close() socket during connection failure", e2);
-////                    }
-//                }
+               // Make a connection to the BluetoothSocket
+               // try {
+               //     // This is a blocking call and will only return on a
+               //     // successful connection or an exception
+               //
+               //
+               // } catch (IOException e) {
+               //     throw new RuntimeException(e);
+               //     // Close the socket
+               //     try {
+               //         mmSocket.close();
+               //     } catch (IOException e2) {
+               //         Log.e(TAG, "unable to close() socket during connection failure", e2);
+               //     }
+               // }
 
                 //     mmBuffer = new byte[1024];
                 //     int numBytes; // bytes returned from read()
@@ -394,8 +353,6 @@ public class BluetoothService {
                 //         handler.sendMessage(writeErrorMsg);
                 //     }
                 // }
-
-
             }
         }
     }

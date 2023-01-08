@@ -8,10 +8,7 @@ import com.example.esp32.BluetoothService;
 public class DashBoardViewModel extends ViewModel {
     BluetoothService bts;
 
-    // public DashBoardViewModel(BluetoothService bluetoothService) {
-    public DashBoardViewModel() {
-        // this.bts = bluetoothService;
-    }
+    public DashBoardViewModel() {}
 
     public void setX(BluetoothService bluetoothService) {
         this.bts = bluetoothService;
